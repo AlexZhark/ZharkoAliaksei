@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+Каталог продуктов
+{% endblock %}
+
+{% block content %}
+<div class="my-content">
+    {% for p in products %}
+    <a href="{% url 'product' p.id %}" style="text-decoration: none; color: black;">
+        <h2><b>{{p.title}}</b></h2>
+    </a>
+    <a href="{% url 'product' p.id %}"><img width="40%" src="{{p.image.url}}" alt="" class="img-thumbnail">
+    </a>
+    <div>
+        {{p.content}}
+    </div>
+    <h4>Стоимость: от {{p.price}} $</h4>
+    <hr>
+    {% endfor %}
+</div>
+{% include 'main/telegram_form.html' %}
+{% endblock %}

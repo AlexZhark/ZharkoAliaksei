@@ -1,0 +1,28 @@
+.my-carousel .carousel-item{
+    display: flex;
+    max-height: 515px;
+}
+
+.my-content{
+    margin: 1em;
+    padding: 1em 1em 5em;
+}
+
+.my-carousel .carousel-item img{
+    object-fit: cover;
+}
+
+.my-carousel .my{
+    background-color: rgb(29, 29, 29);
+    border-radius: 10px;
+    opacity: 0.9;
+}
+
+.my-margin-header{
+    margin: 0 1em;
+}
+
+.fixed-bottom{
+    background-color: rgb(238, 280, 238);
+}
+

@@ -1,0 +1,47 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+Отзывы клиентов
+{% endblock %}
+
+{% block content %}
+<div class="container my-content">
+{% if forms %}
+    {% for p in forms %}
+        <h4><b>{{p.author}}</b></h4>
+        <div><i>{{p.comment}}</i></div>
+        <a href="{{p.image.url}}"><img width="30%" src="{{p.image.url}}" alt="" class="img-thumbnail"></a>
+        <div><small><i>{{p.date}}</i></small></div>
+        <hr>
+    {% endfor %}
+{% else %}
+    <h3>Отзывов пока нет</h3>
+{% endif %}
+
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ReviewModal">
+    <i class="fa-solid fa-plus"></i> Добавить отзыв</button>
+
+<div class="modal fade" id="ReviewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Добавление нового отзыва</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" id="target">
+                    {% csrf_token %}
+                    {{form_rew.as_p}}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Назад</button>
+                <button type="submit" class="btn btn-dark" form="target">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% include 'main/telegram_form.html' %}
+{% endblock %}

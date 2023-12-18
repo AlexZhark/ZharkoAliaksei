@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+{{p.title}}
+{% endblock %}
+
+
+{% block content %}
+<h2>{{p.title}}</h2>
+<img width="40%" src="{{p.image.url}}" alt="">
+<p>{{p.content}}</p>
+<h4>Стоимость: от {{p.price}} $</h4>
+
+{% include 'main/telegram_form.html' %}
+{% endblock %}
+
+
